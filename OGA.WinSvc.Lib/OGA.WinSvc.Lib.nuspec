@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>OGA.WinSvc.Lib</id>
+    <version>1.0.1</version>
+    <authors>Lee White</authors>
+    <owners>Lee White</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides status and control methods for managing Windows services.</description>
+    <copyright>$copyright$</copyright>
+    <license type="expression">MIT</license>
+
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.2">
+        <dependency id="NLog" version="5.2.8" exclude="Build,Analyzers" />
+        <dependency id="OGA.SharedKernel" version="3.5.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="NLog" version="5.2.8" exclude="Build,Analyzers" />
+        <dependency id="OGA.SharedKernel" version="3.5.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net5.0">
+        <dependency id="NLog" version="5.2.8" exclude="Build,Analyzers" />
+        <dependency id="OGA.SharedKernel" version="3.5.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="NLog" version="5.2.8" exclude="Build,Analyzers" />
+        <dependency id="OGA.SharedKernel" version="3.5.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net7.0">
+        <dependency id="NLog" version="5.2.8" exclude="Build,Analyzers" />
+        <dependency id="OGA.SharedKernel" version="3.5.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src=".\OGA.WinSvc.Lib_NET452\bin\Debug\net452\win\OGA.WinSvc.Lib.dll" target="lib\net452" />
+    <file src=".\OGA.WinSvc.Lib_NET452\bin\Debug\net452\win\OGA.WinSvc.Lib.xml" target="lib\net452" />
+    <file src=".\OGA.WinSvc.Lib_NET452\bin\Debug\net452\win\OGA.WinSvc.Lib.pdb" target="lib\net452" />
+
+    <file src=".\OGA.WinSvc.Lib_NET48\bin\Debug\net48\win\OGA.WinSvc.Lib.dll" target="lib\net48" />
+    <file src=".\OGA.WinSvc.Lib_NET48\bin\Debug\net48\win\OGA.WinSvc.Lib.xml" target="lib\net48" />
+    <file src=".\OGA.WinSvc.Lib_NET48\bin\Debug\net48\win\OGA.WinSvc.Lib.pdb" target="lib\net48" />
+
+    <file src=".\OGA.WinSvc.Lib_NET5\bin\Debug\net5.0\win\OGA.WinSvc.Lib.dll" target="lib\net5.0" />
+    <file src=".\OGA.WinSvc.Lib_NET5\bin\Debug\net5.0\win\OGA.WinSvc.Lib.xml" target="lib\net5.0" />
+    <file src=".\OGA.WinSvc.Lib_NET5\bin\Debug\net5.0\win\OGA.WinSvc.Lib.pdb" target="lib\net5.0" />
+
+    <file src=".\OGA.WinSvc.Lib_NET6\bin\Debug\net6.0\win\OGA.WinSvc.Lib.dll" target="lib\net6.0" />
+    <file src=".\OGA.WinSvc.Lib_NET6\bin\Debug\net6.0\win\OGA.WinSvc.Lib.xml" target="lib\net6.0" />
+    <file src=".\OGA.WinSvc.Lib_NET6\bin\Debug\net6.0\win\OGA.WinSvc.Lib.pdb" target="lib\net6.0" />
+
+    <file src=".\OGA.WinSvc.Lib_NET7\bin\Debug\net7.0\win\OGA.WinSvc.Lib.dll" target="lib\net7.0" />
+    <file src=".\OGA.WinSvc.Lib_NET7\bin\Debug\net7.0\win\OGA.WinSvc.Lib.xml" target="lib\net7.0" />
+    <file src=".\OGA.WinSvc.Lib_NET7\bin\Debug\net7.0\win\OGA.WinSvc.Lib.pdb" target="lib\net7.0" />
+  </files>
+</package>

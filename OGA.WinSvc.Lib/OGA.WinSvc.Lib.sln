@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OGA.WinSvc.Lib_NET5", "OGA.WinSvc.Lib_NET5\OGA.WinSvc.Lib_NET5.csproj", "{3A5A600B-55C3-4D2A-B864-C4130638944C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OGA.WinSvc.Lib_NET452", "OGA.WinSvc.Lib_NET452\OGA.WinSvc.Lib_NET452.csproj", "{72353B76-95D4-4D9F-A2B3-474A2C018DD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OGA.WinSvc.Lib_NET48", "OGA.WinSvc.Lib_NET48\OGA.WinSvc.Lib_NET48.csproj", "{6173D2CF-414A-4D59-9683-5FEB41A77F53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OGA.WinSvc.Lib_NET6", "OGA.WinSvc.Lib_NET6\OGA.WinSvc.Lib_NET6.csproj", "{20CC51F6-7295-4C62-A7C8-EDD8BEBAC2CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OGA.WinSvc.Lib_NET7", "OGA.WinSvc.Lib_NET7\OGA.WinSvc.Lib_NET7.csproj", "{281C2AEE-91A4-4BCE-BF3F-0D452F4F5D1D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OGA.WinSvc.Lib_SP", "OGA.WinSvc.Lib_SP\OGA.WinSvc.Lib_SP.shproj", "{BACD2893-EBBB-4D57-96FD-C2588B96FB2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A5A600B-55C3-4D2A-B864-C4130638944C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A5A600B-55C3-4D2A-B864-C4130638944C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A5A600B-55C3-4D2A-B864-C4130638944C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A5A600B-55C3-4D2A-B864-C4130638944C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72353B76-95D4-4D9F-A2B3-474A2C018DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72353B76-95D4-4D9F-A2B3-474A2C018DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72353B76-95D4-4D9F-A2B3-474A2C018DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72353B76-95D4-4D9F-A2B3-474A2C018DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6173D2CF-414A-4D59-9683-5FEB41A77F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6173D2CF-414A-4D59-9683-5FEB41A77F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6173D2CF-414A-4D59-9683-5FEB41A77F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6173D2CF-414A-4D59-9683-5FEB41A77F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20CC51F6-7295-4C62-A7C8-EDD8BEBAC2CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CC51F6-7295-4C62-A7C8-EDD8BEBAC2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CC51F6-7295-4C62-A7C8-EDD8BEBAC2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CC51F6-7295-4C62-A7C8-EDD8BEBAC2CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281C2AEE-91A4-4BCE-BF3F-0D452F4F5D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281C2AEE-91A4-4BCE-BF3F-0D452F4F5D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281C2AEE-91A4-4BCE-BF3F-0D452F4F5D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281C2AEE-91A4-4BCE-BF3F-0D452F4F5D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5C6D73C-5590-4869-8830-7CB8B7542371}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		OGA.WinSvc.Lib_SP\OGA.WinSvc.Lib_SP.projitems*{20cc51f6-7295-4c62-a7c8-edd8bebac2ce}*SharedItemsImports = 5
+		OGA.WinSvc.Lib_SP\OGA.WinSvc.Lib_SP.projitems*{281c2aee-91a4-4bce-bf3f-0d452f4f5d1d}*SharedItemsImports = 5
+		OGA.WinSvc.Lib_SP\OGA.WinSvc.Lib_SP.projitems*{3a5a600b-55c3-4d2a-b864-c4130638944c}*SharedItemsImports = 5
+		OGA.WinSvc.Lib_SP\OGA.WinSvc.Lib_SP.projitems*{6173d2cf-414a-4d59-9683-5feb41a77f53}*SharedItemsImports = 5
+		OGA.WinSvc.Lib_SP\OGA.WinSvc.Lib_SP.projitems*{72353b76-95d4-4d9f-a2b3-474a2c018dd4}*SharedItemsImports = 5
+		OGA.WinSvc.Lib_SP\OGA.WinSvc.Lib_SP.projitems*{bacd2893-ebbb-4d57-96fd-c2588b96fb2e}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal
