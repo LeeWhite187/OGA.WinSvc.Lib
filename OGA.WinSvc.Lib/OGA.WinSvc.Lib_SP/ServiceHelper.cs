@@ -234,8 +234,7 @@ namespace OGA.WinSvc
                     "Attempting to uninstall any previous service instances...");
 
                 // Uninstall any previous instance of the service.
-                List<string> svcinstances = new List<string>();
-                ServiceHelper.Get_ServiceList_Matching_Rootname(serviceName_root, ref svcinstances);
+                List<string> svcinstances = ServiceHelper.Get_ServiceList_Matching_Rootname(serviceName_root);
                 if (svcinstances.Count == 0)
                 {
                     OGA.SharedKernel.Logging_Base.Logger_Ref?.Debug(
@@ -347,14 +346,14 @@ namespace OGA.WinSvc
         /// <param name="displayName"></param>
         /// <param name="binpath"></param>
         /// <param name="args"></param>
-        /// <param name="Description"></param>
+        /// <param name="description"></param>
         /// <param name="waittime"></param>
         /// <returns></returns>
-		static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string Description, int waittime)
+		static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string description, int waittime)
         {
             // Call the install and start method with NULL for username and password.
             // This will register the service as the Local_System user.
-            return InstallAndStart(serviceName, displayName, binpath, args, Description, waittime, null, null);
+            return InstallAndStart(serviceName, displayName, binpath, args, description, waittime, null, null);
         }
         /// <summary>
         /// Service installer that configures the service with the Local_System account.
@@ -374,13 +373,13 @@ namespace OGA.WinSvc
         /// <param name="displayName"></param>
         /// <param name="binpath"></param>
         /// <param name="args"></param>
-        /// <param name="Description"></param>
+        /// <param name="description"></param>
         /// <returns></returns>
-		static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string Description)
+		static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string description)
         {
             // Call the install and start method with NULL for username and password.
             // This will register the service as the Local_System user.
-            return InstallAndStart(serviceName, displayName, binpath, args, Description, 20000, null, null);
+            return InstallAndStart(serviceName, displayName, binpath, args, description, 20000, null, null);
         }
         /// <summary>
         /// Service installer that configures the service with the Local_System account.
@@ -400,15 +399,15 @@ namespace OGA.WinSvc
         /// <param name="displayName"></param>
         /// <param name="binpath"></param>
         /// <param name="args"></param>
-        /// <param name="Description"></param>
+        /// <param name="description"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-		static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string Description, string username, string password)
+		static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string description, string username, string password)
         {
             // Call the install and start method with NULL for username and password.
             // This will register the service as the Local_System user.
-            return InstallAndStart(serviceName, displayName, binpath, args, Description, 20000, null, null);
+            return InstallAndStart(serviceName, displayName, binpath, args, description, 20000, username, password);
         }
         /// <summary>
         /// Service installer that accepts a username and password.
@@ -427,12 +426,12 @@ namespace OGA.WinSvc
         /// <param name="displayName"></param>
         /// <param name="binpath"></param>
         /// <param name="args"></param>
-        /// <param name="Description"></param>
+        /// <param name="description"></param>
         /// <param name="waittime"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string Description, int waittime, string username, string password)
+        static public int InstallAndStart(string serviceName, string displayName, string binpath, string args, string description, int waittime, string username, string password)
         {
             string binpath_with_args = "";
             IntPtr scm = IntPtr.Zero;
@@ -505,7 +504,7 @@ namespace OGA.WinSvc
                         // This is done in a secondary call since the create service API call has no input for service description.
                         var pinfo = new SERVICE_DESCRIPTION
                         {
-                            lpDescription = Description
+                            lpDescription = description
                         };
 
                         // Tell the SCM to change the service description for us.
@@ -558,11 +557,11 @@ namespace OGA.WinSvc
         /// <param name="displayName"></param>
         /// <param name="binpath"></param>
         /// <param name="args"></param>
-        /// <param name="Description"></param>
+        /// <param name="description"></param>
         /// <returns></returns>
-        static public int Install_Service(string serviceName, string displayName, string binpath, string args, string Description)
+        static public int Install_Service(string serviceName, string displayName, string binpath, string args, string description)
         {
-            return Install_Service(serviceName, displayName, binpath, args, Description, null, null);
+            return Install_Service(serviceName, displayName, binpath, args, description, null, null);
         }
         /// <summary>
         /// Service installer that accepts a username and password.
@@ -581,11 +580,11 @@ namespace OGA.WinSvc
         /// <param name="displayName"></param>
         /// <param name="binpath"></param>
         /// <param name="args"></param>
-        /// <param name="Description"></param>
+        /// <param name="description"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        static public int Install_Service(string serviceName, string displayName, string binpath, string args, string Description, string username, string password)
+        static public int Install_Service(string serviceName, string displayName, string binpath, string args, string description, string username, string password)
         {
             string binpath_with_args = "";
 
@@ -657,7 +656,7 @@ namespace OGA.WinSvc
                     // This is done in a secondary call since the create service API call has no input for service description.
                     var pinfo = new SERVICE_DESCRIPTION
                     {
-                        lpDescription = Description
+                        lpDescription = description
                     };
 
                     // Tell the SCM to change the service description for us.
@@ -830,12 +829,9 @@ namespace OGA.WinSvc
         /// Returns  -3 if unable to query the status of the service.
         /// </summary>
         /// <param name="serviceName"></param>
-        /// <param name="state"></param>
         /// <returns></returns>
-        static public int GetServiceStatus(string serviceName, ref ServiceState state)
+        static public (int res, ServiceState state) GetServiceStatus(string serviceName)
         {
-            ServiceState sss = ServiceState.Unknown;
-
             // Get a reference to the SCM.
             IntPtr scm = OpenSCManager(ScmAccessRights.AllAccess);
 
@@ -843,7 +839,7 @@ namespace OGA.WinSvc
             if (scm == IntPtr.Zero)
             {
                 // Could not get a reference to the SCM.
-                return -1;
+                return (-1, ServiceState.Unknown);
             }
             // We have a handle to the SCM.
 
@@ -854,22 +850,21 @@ namespace OGA.WinSvc
                 if (service == IntPtr.Zero)
                 {
                     // Service not found by name.
-                    state = ServiceState.NotFound;
-                    return -2;
+                    return (-2, ServiceState.NotFound);
                 }
                 // A service handle was received.
 
                 try
                 {
                     // Attempt to get the status of the service.
-                    if(GetServiceState(service, ref sss) != 1)
+                    var resget = GetServiceState(service);
+                    if(resget.res != 1)
                     {
                         // Unable to query the status of the service.
-                        return -3;
+                        return (-3, ServiceState.Unknown);
                     }
                     // We have the service status.
-                    state = sss;
-                    return 1;
+                    return (1, resget.state);
                 }
                 finally
                 {
@@ -887,9 +882,8 @@ namespace OGA.WinSvc
         /// Will determine the filepath of the service binary.
         /// </summary>
         /// <param name="serviceName"></param>
-        /// <param name="binpath"></param>
         /// <returns></returns>
-        static public int GetServicBinPath(string serviceName, ref string binpath)
+        static public (int res, string binpath) GetServiceBinPath(string serviceName)
         {
 #pragma warning disable CA1416 // Validate platform compatibility
 #if (NET452 || NET48)
@@ -919,7 +913,7 @@ namespace OGA.WinSvc
                     if(key == null)
                     {
                         // No image path defined.
-                        return -1;
+                        return (-1, "");
                     }
 
                     // Attempt to get the bin path.
@@ -928,16 +922,15 @@ namespace OGA.WinSvc
                     if(regpath == null)
                     {
                         // No image path defined.
-                        return -1;
+                        return (-1, "");
                     }
 
-                    binpath = (string)regpath;
-
-                    return 1;
+                    var binpath = (string)regpath;
+                    return (1, binpath);
                 }
                 catch(Exception)
                 {
-                    return -2;
+                    return (-2, "");
                 }
                 finally
                 {
@@ -977,17 +970,15 @@ namespace OGA.WinSvc
         /// Makes a list of all service instances that begin with the given service name root.
         /// </summary>
         /// <param name="servicenameroot"></param>
-        /// <param name="servicenames"></param>
         /// <returns></returns>
-        static public int Get_ServiceList_Matching_Rootname(string servicenameroot, ref System.Collections.Generic.List<string> servicenames)
+        static public List<string> Get_ServiceList_Matching_Rootname(string servicenameroot)
         {
+            System.Collections.Generic.List<string> servicenames = new List<string>();
+
             try
             {
                 // Get a list of all services in the machine.
                 System.ServiceProcess.ServiceController[] s = System.ServiceProcess.ServiceController.GetServices();
-
-                // Instanciate the result listing.
-                servicenames = new System.Collections.Generic.List<string>();
 
                 // Iterate the list to find all the matches.
                 foreach(var t in s)
@@ -1001,11 +992,11 @@ namespace OGA.WinSvc
                 }
 
                 // Return the number of found services to the caller.
-                return servicenames.Count;
+                return servicenames;
             }
             catch (Exception)
             {
-                return -2;
+                return servicenames;
             }
         }
 
@@ -1499,7 +1490,7 @@ namespace OGA.WinSvc
         /// <param name="service"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        static private int GetServiceState(IntPtr service, ref ServiceState state)
+        static private (int res, ServiceState state) GetServiceState(IntPtr service)
         {
             // Create a service status instance that we will pass to the query function.
             SERVICE_STATUS status = new SERVICE_STATUS();
@@ -1508,14 +1499,12 @@ namespace OGA.WinSvc
             if (QueryServiceStatus(service, status) == 0)
             {
                 // Failed to query for service status.
-                state = ServiceState.Unknown;
-                return 0;
+                return (0, ServiceState.Unknown);
             }
             // We have the status of the service.
 
             // Return it to the caller.
-            state = status.dwCurrentState;
-            return 1;
+            return (1, status.dwCurrentState);
         }
 
         /// <summary>
